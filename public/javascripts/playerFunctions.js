@@ -2,8 +2,10 @@ const socket = io();
 let player;
 
 function onPlayerReady(event) {
+  player.playVideo();  
   updateDuration();
   progress_bar();
+  document.getElementById('vol').value = player.getVolume();  
 }
 
 time_update_interval = setInterval(function () { // update the duration and progress bar every second.
@@ -12,7 +14,7 @@ time_update_interval = setInterval(function () { // update the duration and prog
 }, 1000);
 
 function updateDuration() {
-  document.getElementById("duration").value = `${Math.round(player.getDuration() / 60)} minutes`;
+  document.getElementById("duration").value = `length: ${Math.round(player.getDuration() / 60)} minutes`;
 }
 
 function progress_bar() {
@@ -33,6 +35,14 @@ $('.range-progress-bar').on('mouseup touchend', function (e) {
   // Skip video to new time.
   player.seekTo(newTime);
 
+  if(player.getPlayerState() == 3){
+    socket.emit("time", "buffering");    
+  }
   socket.emit("time", newTime);
 });
 
+$('.setVolume').on('mouseup touchend', function (e) {
+    player.setVolume(e.target.value);
+    document.getElementById('vol').value = e.target.value;
+    console.log(e.target.value);
+});

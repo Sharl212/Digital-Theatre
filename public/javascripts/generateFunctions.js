@@ -5,5 +5,9 @@ const generateTime = (time) =>{
 const generateCommands = (command)=>{
     return command;
 }
-module.exports = {generateTime, generateCommands};
+
+const generateVolumeLevel = (volume)=>{
+    return volume;
+}
+module.exports = {generateTime, generateCommands, generateVolumeLevel};
 

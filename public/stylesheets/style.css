@@ -1,8 +1,23 @@
 body {
-  padding: 50px;
+  padding: 30px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#duration{
+  font-size:30px;
+  text-align:center;
+}
+.progress{
+  padding-left:0;
+}
+.progress{
+  width:1080px;
+}
+
+#vol {
+  width:9%;
+  text-align:center;
+}
+.btn{
+  margin:3px;
 }

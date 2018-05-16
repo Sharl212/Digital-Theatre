@@ -1,24 +1,24 @@
 const express = require('express'),
-  path = require('path'),
-  favicon = require('serve-favicon'),
-  logger = require('morgan'),
-  cookieParser = require('cookie-parser'),
-  bodyParser = require('body-parser'),
-  http = require('http'),
+      path = require('path'),
+      favicon = require('serve-favicon'),
+      logger = require('morgan'),
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser'),
+      http = require('http'),
 
-  index = require('./routes/index'),
-  users = require('./routes/users'),
+      index = require('./routes/index'),
+      users = require('./routes/users'),
 
-  app = express(),
+      app = express(),
 
-  { generateTime, generateCommands } = require('./public/javascripts/generateFunctions');
+      { generateTime, generateCommands, generateVolumeLevel } = require('./public/javascripts/generateFunctions');
 
-socketIO = require('socket.io'),
+  socketIO = require('socket.io'),
   server = http.createServer(app),
   io = socketIO(server),
 
   // view engine setup
-  app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
@@ -40,7 +40,15 @@ io.on('connection', (socket) => {
 
   socket.on('videoCmd', (cmd) => {
     socket.broadcast.emit("pauseOrPlay", generateCommands(cmd));
-  })
+  });
+
+  socket.on('VolumeSetting', (volume) => {
+    socket.broadcast.emit("VolumeLevels", generateVolumeLevel(volume));
+  });
+
+  socket.on('linkOfVideo', (link) => {
+    socket.broadcast.emit("vidLink", link);
+  });
 })
 
 

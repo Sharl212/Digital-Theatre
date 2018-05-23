@@ -49,6 +49,17 @@ io.on('connection', (socket) => {
   socket.on('linkOfVideo', (link) => {
     socket.broadcast.emit("vidLink", link);
   });
+  
+  socket.on("newUserConnected", (msg)=>{
+    socket.broadcast.emit("aNewUserConnected", msg);
+  });
+
+  io.of('/').clients((error, clients) => {
+    if (error) throw error;
+    console.log(clients.length); // => [PZDoMHjiu8PYfRiKAAAF, Anw2LatarvGVVXEIAAAD]
+    io.emit('UsersLength', clients.length); // number of clients connected.
+  });
+
 })
 
 

@@ -1,13 +1,13 @@
-const generateTime = (time) =>{
+const generateTime = (time) => {
     return time;
 }
 
-const generateCommands = (command)=>{
+const generateCommands = (command) => {
     return command;
 }
 
-const generateVolumeLevel = (volume)=>{
+const generateVolumeLevel = (volume) => {
     return volume;
 }
-module.exports = {generateTime, generateCommands, generateVolumeLevel};
+module.exports = { generateTime, generateCommands, generateVolumeLevel };
 

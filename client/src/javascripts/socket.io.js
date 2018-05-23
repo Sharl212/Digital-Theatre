@@ -1,5 +1,3 @@
-
-
 socket.on('connect', () => {
     console.log("fired");
 
@@ -28,8 +26,8 @@ socket.on('vidLink', (link) => {
     alert.css({ "display": "block" });
     setTimeout(() => {
         alert.css({ "display": "none" });
-    }, 12000);
-
+    }, 12000);    
+    
     $("#VideosBeingPlayed").on('click', () => {
         $('#link').val(link);
         onYouTubeIframeAPIReady();

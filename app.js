@@ -13,9 +13,9 @@ const express = require('express'),
 
       { generateTime, generateCommands, generateVolumeLevel } = require('./public/javascripts/generateFunctions');
 
-  socketIO = require('socket.io'),
-  server = http.createServer(app),
-  io = socketIO(server),
+const   socketIO = require('socket.io'),
+        server = http.createServer(app),
+        io = socketIO(server);
 
   // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
 })
 
 
-server.listen(process.env.PORT, () => console.log('app is on 3000'));
+server.listen(process.env.PORT || 3000, () => console.log('app is on 3000'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

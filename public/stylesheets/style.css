@@ -23,6 +23,7 @@ body {
 .layer {
   background-color:transparent;
   cursor:none;
+  margin-top:10px;
 }
 
 #count{
@@ -43,4 +44,29 @@ body {
 
 #VideosBeingPlayed{
   cursor:pointer;
+}
+
+.custom-range{
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+#progressbar-Section,
+.controls{
+  display:none;
+}
+
+#command-log{
+  overflow-y: scroll;
+  max-height: 600px;
+}
+
+.active{
+  text-align: center;
+  font-size:17px !important;
+}
+
+.list-group-item{
+  text-align: center;
+  font-size:14px;
 }

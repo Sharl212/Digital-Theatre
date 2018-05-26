@@ -12,27 +12,32 @@
 </head>
 
 <body>
-  <div class='container'>
+  <div class='container-fluid'>
     <div class='row'>
       <div class="alert alert-warning col-12" role="alert">
-      </div><br>
+      </div>
+      <br>
       <div class='row col-12'>
         <input class='form-control col-3' type='text' id='link' placeholder="video id.." />
         <button class='btn btn-primary col-3' id='sendVid' onclick='onYouTubeIframeAPIReady()'>Import video</button>
-        <div id="count" class='col-6'></div>
+        <div id="count" class='col-3'></div>
       </div>
-
-      <div class='layer'>
+      <div class='layer col-lg-10 col-sm-12'>
         <div id="player"></div>
       </div>
-      <div class="progress">
-        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-          <span class="sr-only"></span>
+
+      <ul class="list-group col-lg-2 col-sm-12" id='command-log'>
+        <li class="list-group-item active">Partner Requested Commands</li>
+      </ul>
+      <div id='progressbar-Section'>
+        <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <span class="sr-only"></span>
+          </div>
         </div>
+        <input class="range-progress-bar custom-range" role="progressbar" type='range' value="0" style='width:1080px' />
       </div>
       <div class="alert alert-success" id='VideosBeingPlayed' role="alert"></div>
-      <input class="range-progress-bar custom-range" role="progressbar" type='range' value="0" style='width:1080px' />
-
       <div class='controls col-12'>
         <div class='row'>
           <button class='btn btn-success' onclick='Play()'>Play</button>

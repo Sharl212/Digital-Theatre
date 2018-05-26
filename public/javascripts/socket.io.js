@@ -40,9 +40,9 @@ socket.on("newTime", (time) => {
     if (time == "buffering") {
         return player.pauseVideo();
     } else {
-        player.playVideo();
         player.seekTo(time);
         console.log("new time", time);
+        document.getElementById('command-log').innerHTML += `<li class="list-group-item" >skip to ${Math.round(time)} second/s</li>`;
     }
 });
 
@@ -50,18 +50,23 @@ socket.on("newTime", (time) => {
 socket.on("pauseOrPlay", (cmd) => {
     if (cmd == "PAUSE") {
         player.pauseVideo();
+        document.getElementById('command-log').innerHTML += '<li class="list-group-item" >PAUSE</li>';
     }
     else {
         player.playVideo();
+        document.getElementById('command-log').innerHTML += '<li class="list-group-item" >PLAY</li>';        
     }
+
     console.log("new command", cmd);
 });
 
 socket.on("VolumeLevels", (setting) => {
     if (setting == "Mute") {
         player.mute();
+        document.getElementById('command-log').innerHTML += '<li class="list-group-item" >MUTE</li>';        
     } else if (setting == "unMute") {
         player.unMute();
+        document.getElementById('command-log').innerHTML += '<li class="list-group-item" >unMUTE</li>';        
     }
     console.log("new volume", setting)
 });
@@ -69,5 +74,5 @@ socket.on("VolumeLevels", (setting) => {
 socket.on("UsersLength", (length) => {
     console.log(length); // number of users connected.
 
-    document.getElementById("count").innerHTML = `number of users online ${length}`;
+    document.getElementById("count").innerHTML = `<span class='btn btn-outline-success'>Online Users ${length-1}</span>`;
 })

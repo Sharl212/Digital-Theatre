@@ -17,6 +17,8 @@ function onYouTubeIframeAPIReady() {
         onReady: onPlayerReady
       }
     });
+    $('#progressbar-Section').css({"display":"block"});
+    $('.controls').css({"display":"block"});
     $(".btn-primary").attr('class', 'btn btn-success');
     $('#sendVid').text('Send invite');
     socket.emit("linkOfVideo", vidLink);
